@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChanelEngine.Service.Common\ChanelEngine.Service.Common.csproj" />
+    <ProjectReference Include="..\Orders.Common\Orders.Common.csproj" />
+  </ItemGroup>
+
+</Project>
