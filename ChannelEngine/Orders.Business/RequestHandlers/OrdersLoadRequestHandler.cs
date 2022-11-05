@@ -2,7 +2,11 @@
 using Orders.ChanelEngine.Service.Interfaces;
 using Orders.Contracts.Messages.Request;
 using Orders.Contracts.Messages.Response;
+using System.Linq;
 using System.Threading.Tasks;
+using ChanelEngine.Service.Common.Models;
+using System.Collections.Generic;
+using DomainModels = Orders.Contracts.DomainModels;
 
 namespace Orders.Business.RequestHandlers
 {
@@ -15,11 +19,35 @@ namespace Orders.Business.RequestHandlers
         }
         public async Task<OrdersLoadResponse> ProcessRequest(EmptyRequest request)
         {
-            var response = new OrdersLoadResponse();
+            int serialNumber = 1;
 
-            var Orders = await _channelEngineService.GetOrdersAsync();
+            var inProgressOrders = await _channelEngineService.GetInProgressOrdersAsync();
 
-            return response;
+            if (inProgressOrders == null)
+            {
+                return new OrdersLoadResponse
+                {
+                    IsSucess = false,
+                    Message = "Failed to fetch Order details"
+                };
+            }
+            var lines = inProgressOrders
+                .SelectMany(s => s.Lines)
+                .OrderBy(x => (x.Quantity + x.CancellationRequestedQuantity))
+                .Take(5);
+            
+            return new OrdersLoadResponse
+            {
+                Orders = lines.Select(x => new DomainModels.OrdersInfo
+                {
+                    SerialNumber = serialNumber++,
+                    ProductName = x.Description,
+                    GtIn = x.Gtin,
+                    Quantity = x.Quantity
+                }),
+                IsSucess = true,
+                Message = "Records fetched successfully"
+            };
         }
     }
 }

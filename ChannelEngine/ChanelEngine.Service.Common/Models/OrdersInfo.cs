@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ChanelEngine.Service.Common.Models
 {
-    public class Content
+    public class OrdersInfo
     {
         public int Id { get; set; }
         public string ChannelName { get; set; }

@@ -11,18 +11,28 @@ namespace Orders.ConsoleApp
     public class OrderInformation
     {
         private readonly IRequestHandlerFactory _requestHandlerFactory;
-        
+
         public OrderInformation(IRequestHandlerFactory requestHandlerFactory)
-        {            
+        {
             _requestHandlerFactory = requestHandlerFactory;
         }
 
-        public void PrintOrderInformation()
+        public async void PrintOrderInformation()
         {
-            var response = _requestHandlerFactory.ProcessRequest<EmptyRequest, OrdersLoadResponse>(EmptyRequest.Instance);
+            var response = await _requestHandlerFactory.ProcessRequest<EmptyRequest, OrdersLoadResponse>(EmptyRequest.Instance);
 
-            Console.WriteLine("Hello World");
+            if (response == null && !response.IsSucess)
+            {
+                Console.WriteLine($"Error: {response.Message}");
+                return;
+            }
+
+            foreach (var prod in response.Orders)
+            {
+                Console.WriteLine($"{prod.SerialNumber}     {prod.ProductName}      {prod.GtIn}     {prod.Quantity}" + Environment.NewLine);
+            }
+
             Console.ReadLine();
-        }        
+        }
     }
 }
