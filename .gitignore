@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ChannelEngine/Order.Console/bin/Debug/netcoreapp3.1
+/ChannelEngine/Orders.Console/bin/Debug/netcoreapp3.1
+/ChannelEngine/Orders.Console/obj
+/ChannelEngine/.vs/ChannelEngine
+/.vs
+/ChannelEngine/Orders.Business/bin/Debug/netcoreapp3.1
+/ChannelEngine/Orders.Business/obj
+/ChannelEngine/Orders.Common/obj
+/ChannelEngine/Orders.Web/bin/Debug/netcoreapp3.1
+/ChannelEngine/Orders.Web/obj
