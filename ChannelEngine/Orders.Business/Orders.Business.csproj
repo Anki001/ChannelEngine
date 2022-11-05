@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="RequestHandlers\" />
+    <ProjectReference Include="..\ChannelEngine.Service\ChanelEngine.Service.csproj" />
+    <ProjectReference Include="..\Orders.Contracts\Orders.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

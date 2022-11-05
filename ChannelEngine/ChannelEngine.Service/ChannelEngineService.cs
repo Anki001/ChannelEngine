@@ -19,11 +19,11 @@ namespace Orders.ChanelEngine.Service
             _channelEngineWebClient = channelEngineWebClient;
         }
 
-        public async Task<Root> GetOrdersAsync()
+        public async Task<OrdersInfoPm> GetOrdersAsync()
         {
-            var endpoint = _applicationConfiguration.Url + "/orders?" + _applicationConfiguration.ApiKey;
+            var endpoint = _applicationConfiguration.Url + "orders?apikey=" + _applicationConfiguration.ApiKey;
             var result = await _channelEngineWebClient.GetAsync(endpoint);
-            return JsonConvert.DeserializeObject<Root>(result);
+            return JsonConvert.DeserializeObject<OrdersInfoPm>(result);
         }
     }
 }

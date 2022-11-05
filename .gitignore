@@ -12,3 +12,12 @@
 /ChannelEngine/Orders.Common/obj
 /ChannelEngine/Orders.Web/bin/Debug/netcoreapp3.1
 /ChannelEngine/Orders.Web/obj
+/ChannelEngine/ChanelEngine.Service.Common/obj
+/ChannelEngine/ChanelEngine.Service.Common/bin/Debug/netcoreapp3.1
+/ChannelEngine/ChannelEngine.Service/obj
+/ChannelEngine/Orders.Contracts/obj
+/ChannelEngine/ChannelEngine.Service/bin/Debug/netcoreapp3.1
+/ChannelEngine/Orders.Common/bin/Debug/netcoreapp3.1
+/ChannelEngine/Orders.ConsoleApp/bin/Debug/netcoreapp3.1
+/ChannelEngine/Orders.ConsoleApp/obj
+/ChannelEngine/Orders.Contracts/bin/Debug/netcoreapp3.1

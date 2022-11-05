@@ -5,6 +5,6 @@ namespace Orders.ChanelEngine.Service.Interfaces
 {
     public interface IChannelEngineService
     {
-        Task<Root> GetOrdersAsync();
+        Task<OrdersInfoPm> GetOrdersAsync();
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChanelEngine.Service.Common.Models
 {
-    public class Root
+    public class OrdersInfoPm
     {
         public List<Content> Content { get; set; }
         public int Count { get; set; }
