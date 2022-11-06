@@ -1,6 +1,6 @@
-﻿using ChanelEngine.Service.Common.Models.Products;
-using Orders.Business.Interfaces;
+﻿using Orders.Business.Interfaces;
 using Orders.ChanelEngine.Service.Interfaces;
+using Orders.Contracts.Messages.Request;
 using Orders.Contracts.Messages.Response;
 using System.Threading.Tasks;
 

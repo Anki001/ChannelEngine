@@ -1,8 +1,8 @@
-﻿using ChanelEngine.Service.Common.Models.Products;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Orders.Business.RequestHandlers;
 using Orders.Contracts.DomainModels.Products;
+using Orders.Contracts.Messages.Request;
 using Orders.Contracts.Messages.Response;
 using Orders.UnitTests.Common;
 using System.Collections.Generic;

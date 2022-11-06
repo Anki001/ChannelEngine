@@ -1,10 +1,10 @@
 ﻿using ChanelEngine.Service.Common.Models;
-using ChanelEngine.Service.Common.Models.Products;
 using ChanelEngine.Service.Interfaces;
 using Newtonsoft.Json;
 using Orders.ChanelEngine.Service.Interfaces;
 using Orders.Common.Interfaces;
 using Orders.Contracts.DomainModels.Products;
+using Orders.Contracts.Messages.Request;
 using Orders.Contracts.Messages.Response;
 using System.Collections.Generic;
 using System.Linq;

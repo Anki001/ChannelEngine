@@ -1,5 +1,5 @@
 ﻿using ChanelEngine.Service.Common.Models;
-using ChanelEngine.Service.Common.Models.Products;
+using Orders.Contracts.Messages.Request;
 using Orders.Contracts.Messages.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;

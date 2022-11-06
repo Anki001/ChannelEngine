@@ -1,7 +1,7 @@
 ﻿using Orders.Contracts.DomainModels.Products;
 using System.Collections.Generic;
 
-namespace ChanelEngine.Service.Common.Models.Products
+namespace Orders.Contracts.Messages.Request
 {
     public class ProductUpsertRequest
     {
