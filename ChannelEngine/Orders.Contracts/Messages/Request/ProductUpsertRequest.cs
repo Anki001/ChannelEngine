@@ -16,24 +16,24 @@ namespace Orders.Contracts.Messages.Request
         public string Ean { get; set; }
         public string ManufacturerProductNumber { get; set; }
         public string MerchantProductNo { get; set; }
-        public int Stock { get; set; }
-        public double Price { get; set; }
-        public double MSRP { get; set; }
-        public double PurchasePrice { get; set; }
+        public int? Stock { get; set; }
+        public double? Price { get; set; }
+        public double? MSRP { get; set; }
+        public double? PurchasePrice { get; set; }
         public string VatRateType { get; set; }
-        public double ShippingCost { get; set; }
+        public double? ShippingCost { get; set; }
         public string ShippingTime { get; set; }
         public string Url { get; set; }
         public string ImageUrl { get; set; }
-        public string ExtraImageUrl1 { get; set; }
-        public string ExtraImageUrl2 { get; set; }
-        public string ExtraImageUrl3 { get; set; }
-        public string ExtraImageUrl4 { get; set; }
-        public string ExtraImageUrl5 { get; set; }
-        public string ExtraImageUrl6 { get; set; }
-        public string ExtraImageUrl7 { get; set; }
-        public string ExtraImageUrl8 { get; set; }
-        public string ExtraImageUrl9 { get; set; }
+        public object ExtraImageUrl1 { get; set; }
+        public object ExtraImageUrl2 { get; set; }
+        public object ExtraImageUrl3 { get; set; }
+        public object ExtraImageUrl4 { get; set; }
+        public object ExtraImageUrl5 { get; set; }
+        public object ExtraImageUrl6 { get; set; }
+        public object ExtraImageUrl7 { get; set; }
+        public object ExtraImageUrl8 { get; set; }
+        public object ExtraImageUrl9 { get; set; }
         public string CategoryTrail { get; set; }
     }
 }

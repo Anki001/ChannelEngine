@@ -3,7 +3,6 @@ using ChanelEngine.Service.Interfaces;
 using Newtonsoft.Json;
 using Orders.ChanelEngine.Service.Interfaces;
 using Orders.Common.Interfaces;
-using Orders.Contracts.DomainModels.Products;
 using Orders.Contracts.Messages.Request;
 using Orders.Contracts.Messages.Response;
 using System.Collections.Generic;
@@ -30,7 +29,7 @@ namespace Orders.ChanelEngine.Service
             return orders.Content.Where(x => x.Status.Equals("IN_PROGRESS"));
         }
 
-        public async Task<ProductUpsertResponse> UpsertProduct(ProductUpsertRequest content)
+        public async Task<ProductUpsertResponse> UpsertProduct(IEnumerable<ProductUpsertRequest> content)
         {
             var endpoint = _applicationConfiguration.Url + "products?ignoreStock=false&apikey=" + _applicationConfiguration.ApiKey;
             var result = await _channelEngineWebClient.PostAsync(endpoint, JsonConvert.SerializeObject(content));

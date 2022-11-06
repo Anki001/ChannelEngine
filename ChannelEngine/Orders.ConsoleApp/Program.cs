@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Orders.Business.Interfaces;
 using Orders.Common.Hosting.Extensions;
 using System;
+using System.Threading;
 
 namespace Orders.ConsoleApp
 {
@@ -22,7 +23,8 @@ namespace Orders.ConsoleApp
 
             var requestHandlerFactory = GetService<IRequestHandlerFactory>();
 
-            var startup = new OrderInformation(requestHandlerFactory);
+            var startup = new OrderManagement(requestHandlerFactory);
+            
             startup.PrintOrderInformation();
 
             host.RunAsync().Wait();
@@ -32,5 +34,5 @@ namespace Orders.ConsoleApp
         {
             return (T)_serviceProvider.GetService(typeof(T));
         }
-    }    
+    }
 }
