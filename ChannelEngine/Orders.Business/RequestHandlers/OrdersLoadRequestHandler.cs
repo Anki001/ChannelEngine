@@ -4,8 +4,6 @@ using Orders.Contracts.Messages.Request;
 using Orders.Contracts.Messages.Response;
 using System.Linq;
 using System.Threading.Tasks;
-using ChanelEngine.Service.Common.Models;
-using System.Collections.Generic;
 using DomainModels = Orders.Contracts.DomainModels;
 
 namespace Orders.Business.RequestHandlers
@@ -28,9 +26,19 @@ namespace Orders.Business.RequestHandlers
                 return new OrdersLoadResponse
                 {
                     IsSucess = false,
-                    Message = "Failed to fetch Order details"
+                    Message = "Failed to fetch Orders"                    
                 };
             }
+
+            if (inProgressOrders != null && !inProgressOrders.Any())
+            {
+                return new OrdersLoadResponse
+                {
+                    IsSucess = true,
+                    Message = "No inprogress orders found"
+                };
+            }
+
             var lines = inProgressOrders
                 .SelectMany(s => s.Lines)
                 .OrderBy(x => (x.Quantity + x.CancellationRequestedQuantity))

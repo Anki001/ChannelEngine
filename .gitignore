@@ -23,3 +23,7 @@
 /ChannelEngine/Orders.Contracts/bin/Debug/netcoreapp3.1
 /ChannelEngine/Orders.Common.Hosting/bin/Debug/netcoreapp3.1
 /ChannelEngine/Orders.Common.Hosting/obj
+/ChannelEngine/Orders.Business.UnitTests/bin/Debug/netcoreapp3.1
+/ChannelEngine/Orders.Business.UnitTests/obj
+/ChannelEngine/Orders.UnitTests.Common/bin/Debug/netcoreapp3.1
+/ChannelEngine/Orders.UnitTests.Common/obj
