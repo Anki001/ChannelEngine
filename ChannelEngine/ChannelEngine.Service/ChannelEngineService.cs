@@ -27,13 +27,13 @@ namespace Orders.ChanelEngine.Service
         public async Task<IEnumerable<OrdersInfo>> GetInProgressOrdersAsync()
         {
             var orders = await GetOrdersAsync();
-            return orders.Content.Where(x=> x.Status.Equals("IN_PROGRESS"));
+            return orders.Content.Where(x => x.Status.Equals("IN_PROGRESS"));
         }
 
-        public async Task<ProductUpsertResponse> UpsertProduct(string content)
+        public async Task<ProductUpsertResponse> UpsertProduct(ProductUpsertRequest content)
         {
             var endpoint = _applicationConfiguration.Url + "products?ignoreStock=false&apikey=" + _applicationConfiguration.ApiKey;
-            var result = await _channelEngineWebClient.PostAsync(endpoint, content);
+            var result = await _channelEngineWebClient.PostAsync(endpoint, JsonConvert.SerializeObject(content));
             return JsonConvert.DeserializeObject<ProductUpsertResponse>(result);
         }
 

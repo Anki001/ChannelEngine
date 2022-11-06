@@ -8,7 +8,7 @@ namespace Orders.ChanelEngine.Service.Interfaces
 {
     public interface IChannelEngineService
     {
-        Task<ProductUpsertResponse> UpsertProduct(string content);
+        Task<ProductUpsertResponse> UpsertProduct(ProductUpsertRequest content);
         Task<ProductLoadResponse> GetProductByName(string productName);
         Task<IEnumerable<OrdersInfo>> GetInProgressOrdersAsync();
     }

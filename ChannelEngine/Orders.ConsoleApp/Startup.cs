@@ -1,10 +1,7 @@
 ﻿using Orders.Business.Interfaces;
-using Orders.Business.RequestHandlers;
 using Orders.Contracts.Messages.Request;
 using Orders.Contracts.Messages.Response;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Orders.ConsoleApp
 {
@@ -19,24 +16,20 @@ namespace Orders.ConsoleApp
 
         public async void PrintOrderInformation()
         {
-            var request = new ProductLoadRequest { ProductName = "T-shirt met lange mouw BASIC petrol: XL" };
+            var response = await _requestHandlerFactory.ProcessRequest<EmptyRequest, OrdersLoadResponse>(EmptyRequest.Instance);
 
-            var response = await _requestHandlerFactory.ProcessRequest<ProductLoadRequest, ProductLoadResponse>(request);
+            if (response == null && !response.IsSucess)
+            {
+                Console.WriteLine($"Error: {response.Message}");
+                return;
+            }
 
-            //var response = await _requestHandlerFactory.ProcessRequest<EmptyRequest, OrdersLoadResponse>(EmptyRequest.Instance);
+            foreach (var prod in response.Orders)
+            {
+                Console.WriteLine($"{prod.SerialNumber}     {prod.ProductName}      {prod.GtIn}     {prod.Quantity}" + Environment.NewLine);
+            }
 
-            //if (response == null && !response.IsSucess)
-            //{
-            //    Console.WriteLine($"Error: {response.Message}");
-            //    return;
-            //}
-
-            //foreach (var prod in response.Orders)
-            //{
-            //    Console.WriteLine($"{prod.SerialNumber}     {prod.ProductName}      {prod.GtIn}     {prod.Quantity}" + Environment.NewLine);
-            //}
-
-            //Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }

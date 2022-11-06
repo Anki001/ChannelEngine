@@ -17,11 +17,11 @@ namespace ChanelEngine.Service.Common.Models.Products
         public string ManufacturerProductNumber { get; set; }
         public string MerchantProductNo { get; set; }
         public int Stock { get; set; }
-        public int Price { get; set; }
-        public int MSRP { get; set; }
-        public int PurchasePrice { get; set; }
+        public double Price { get; set; }
+        public double MSRP { get; set; }
+        public double PurchasePrice { get; set; }
         public string VatRateType { get; set; }
-        public int ShippingCost { get; set; }
+        public double ShippingCost { get; set; }
         public string ShippingTime { get; set; }
         public string Url { get; set; }
         public string ImageUrl { get; set; }

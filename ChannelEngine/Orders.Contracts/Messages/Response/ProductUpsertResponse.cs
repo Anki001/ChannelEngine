@@ -1,6 +1,6 @@
 ﻿using Orders.Contracts.DomainModels.Products;
 
-namespace ChanelEngine.Service.Common.Models.Products
+namespace Orders.Contracts.Messages.Response
 {
     public class ProductUpsertResponse
     {
