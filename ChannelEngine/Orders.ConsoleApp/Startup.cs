@@ -19,20 +19,24 @@ namespace Orders.ConsoleApp
 
         public async void PrintOrderInformation()
         {
-            var response = await _requestHandlerFactory.ProcessRequest<EmptyRequest, OrdersLoadResponse>(EmptyRequest.Instance);
+            var request = new ProductLoadRequest { ProductName = "T-shirt met lange mouw BASIC petrol: XL" };
 
-            if (response == null && !response.IsSucess)
-            {
-                Console.WriteLine($"Error: {response.Message}");
-                return;
-            }
+            var response = await _requestHandlerFactory.ProcessRequest<ProductLoadRequest, ProductLoadResponse>(request);
 
-            foreach (var prod in response.Orders)
-            {
-                Console.WriteLine($"{prod.SerialNumber}     {prod.ProductName}      {prod.GtIn}     {prod.Quantity}" + Environment.NewLine);
-            }
+            //var response = await _requestHandlerFactory.ProcessRequest<EmptyRequest, OrdersLoadResponse>(EmptyRequest.Instance);
 
-            Console.ReadLine();
+            //if (response == null && !response.IsSucess)
+            //{
+            //    Console.WriteLine($"Error: {response.Message}");
+            //    return;
+            //}
+
+            //foreach (var prod in response.Orders)
+            //{
+            //    Console.WriteLine($"{prod.SerialNumber}     {prod.ProductName}      {prod.GtIn}     {prod.Quantity}" + Environment.NewLine);
+            //}
+
+            //Console.ReadLine();
         }
     }
 }

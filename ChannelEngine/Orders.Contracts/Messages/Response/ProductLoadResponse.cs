@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Orders.Contracts.DomainModels.Products;
+using System.Collections.Generic;
 
-namespace Orders.Contracts.DomainModels.Products
+namespace Orders.Contracts.Messages.Response
 {
-    public class ProductList
+    public class ProductLoadResponse
     {
         public List<Product> Content { get; set; }
         public int Count { get; set; }

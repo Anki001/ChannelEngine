@@ -7,17 +7,35 @@ namespace ChanelEngine.Service
 {
     public class ChannelEngineWebClient : IChannelEngineWebClient
     {
-        public async Task<string> GetAsync(string url)
+        public async Task<string> PostAsync(string endpoint, string content)
         {
-            var request = GetRequestObject(url);
+            var request = GetRequestObject(endpoint);
+            request.Method = "POST";
+            request.ContentLength = content.Length;
+
+            await WriteApiRequestAsync(request, content);
+
+            return await GetApiWebResponseAsync(request);
+        }
+        public async Task<string> GetAsync(string endpoint)
+        {
+            var request = GetRequestObject(endpoint);
             request.Method = "GET";
 
             return await GetApiWebResponseAsync(request);
         }
 
-        private HttpWebRequest GetRequestObject(string url)
+        private async Task WriteApiRequestAsync(HttpWebRequest request, string content)
         {
-            var request = (HttpWebRequest)WebRequest.Create(url);
+            using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+            {
+                await streamWriter.WriteAsync(content);
+            }
+        }
+
+        private HttpWebRequest GetRequestObject(string endpoint)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(endpoint);
             request.Headers.Add("Accept-Charset", "utf-8");
             request.Headers.Add("Accept", "*/*");
             request.Headers.Add("Content-Type", "application/json");
@@ -27,7 +45,7 @@ namespace ChanelEngine.Service
             return request;
         }
 
-        private static async Task<string> GetApiWebResponseAsync(WebRequest request)
+        private async Task<string> GetApiWebResponseAsync(WebRequest request)
         {
             var json = string.Empty;
             HttpWebResponse response;

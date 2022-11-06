@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Orders.ChanelEngine.Service.Interfaces;
 using Orders.Common.Interfaces;
 using Orders.Contracts.DomainModels.Products;
+using Orders.Contracts.Messages.Response;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,18 +30,18 @@ namespace Orders.ChanelEngine.Service
             return orders.Content.Where(x=> x.Status.Equals("IN_PROGRESS"));
         }
 
-        public async Task<ProductUpsertResponse> UpsertProduct()
+        public async Task<ProductUpsertResponse> UpsertProduct(string content)
         {
             var endpoint = _applicationConfiguration.Url + "products?ignoreStock=false&apikey=" + _applicationConfiguration.ApiKey;
-            var result = await _channelEngineWebClient.GetAsync(endpoint);
+            var result = await _channelEngineWebClient.PostAsync(endpoint, content);
             return JsonConvert.DeserializeObject<ProductUpsertResponse>(result);
         }
 
-        public async Task<ProductList> GetProduct(string productName)
+        public async Task<ProductLoadResponse> GetProductByName(string productName)
         {
-            var endpoint = _applicationConfiguration.Url + "products?search=" + productName + "?apikey=" + _applicationConfiguration.ApiKey;
+            var endpoint = _applicationConfiguration.Url + "products?search=" + productName + "&apikey=" + _applicationConfiguration.ApiKey;
             var result = await _channelEngineWebClient.GetAsync(endpoint);
-            return JsonConvert.DeserializeObject<ProductList>(result);
+            return JsonConvert.DeserializeObject<ProductLoadResponse>(result);
         }
 
         private async Task<OrdersInfoPm> GetOrdersAsync()

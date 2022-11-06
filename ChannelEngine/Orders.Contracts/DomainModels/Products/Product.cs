@@ -17,7 +17,7 @@ namespace Orders.Contracts.DomainModels.Products
         public int? Stock { get; set; }
         public double? Price { get; set; }
         public double? MSRP { get; set; }
-        public int? PurchasePrice { get; set; }
+        public double? PurchasePrice { get; set; }
         public string VatRateType { get; set; }
         public double? ShippingCost { get; set; }
         public string ShippingTime { get; set; }
