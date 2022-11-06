@@ -6,27 +6,24 @@ using Orders.Business.Interfaces;
 using Orders.Business.RequestHandlers;
 using Orders.ChanelEngine.Service;
 using Orders.ChanelEngine.Service.Interfaces;
-using Orders.Common;
 using Orders.Common.Interfaces;
 using System.Linq;
 using System.Reflection;
 
-namespace Orders.ConsoleApp.Extensions
+namespace Orders.Common.Hosting.Extensions
 {
-
-    public static class Hosting
+    public static class HostingExtensions
     {
         public static IHostBuilder ServiceConfiguration(this IHostBuilder builder)
         {
             return builder.ConfigureServices((_, services) =>
-                        services.AddScoped<IApplicationConfiguration, ApplicationConfiguration>()
+                        services.AddScoped<IApplicationConfiguration, ConsoleAppConfiguration>()
                                 .AddScoped<IRequestHandlerFactory, RequestHandlerFactory>()
                                 .AddScoped<IChannelEngineService, ChannelEngineService>()
                                 .AddScoped<IChannelEngineWebClient, ChannelEngineWebClient>()
-                                .RegisterHandlerServices());
+                                .RegisterRequestHandler());
         }
-
-        public static IServiceCollection RegisterHandlerServices(this IServiceCollection services)
+        public static IServiceCollection RegisterRequestHandler(this IServiceCollection services)
         {
             Assembly.GetAssembly(typeof(RequestHandlerFactory))
                         .GetTypes()
@@ -44,4 +41,3 @@ namespace Orders.ConsoleApp.Extensions
         }
     }
 }
-

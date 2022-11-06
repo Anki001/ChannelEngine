@@ -1,12 +1,17 @@
+using ChanelEngine.Service;
+using ChanelEngine.Service.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Orders.Business.Interfaces;
+using Orders.Business.RequestHandlers;
+using Orders.ChanelEngine.Service;
+using Orders.ChanelEngine.Service.Interfaces;
+using Orders.Common;
+using Orders.Common.Hosting.Extensions;
+using Orders.Common.Interfaces;
 
 namespace Orders.Web
 {
@@ -23,6 +28,12 @@ namespace Orders.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IApplicationConfiguration, WebAppConfiguration>()
+                    .AddScoped<IRequestHandlerFactory, RequestHandlerFactory>()
+                    .AddScoped<IChannelEngineService, ChannelEngineService>()
+                    .AddScoped<IChannelEngineWebClient, ChannelEngineWebClient>()
+                    .RegisterRequestHandler();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

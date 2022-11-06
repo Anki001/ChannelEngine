@@ -4,9 +4,9 @@ using System.Configuration;
 
 namespace Orders.Common
 {
-    public class ApplicationConfiguration : IApplicationConfiguration
+    public class ConsoleAppConfiguration : IApplicationConfiguration
     {
-        public ApplicationConfiguration()
+        public ConsoleAppConfiguration()
         {
             LoadConfiguration();
         }

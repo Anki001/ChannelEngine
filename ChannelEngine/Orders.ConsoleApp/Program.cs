@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orders.Business.Interfaces;
-using Orders.ConsoleApp.Extensions;
+using Orders.Common.Hosting.Extensions;
 using System;
 
 namespace Orders.ConsoleApp
