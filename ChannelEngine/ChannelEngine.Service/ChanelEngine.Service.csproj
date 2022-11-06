@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ChanelEngine.Service.Common\ChanelEngine.Service.Common.csproj" />
     <ProjectReference Include="..\Orders.Common\Orders.Common.csproj" />
+    <ProjectReference Include="..\Orders.Contracts\Orders.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
